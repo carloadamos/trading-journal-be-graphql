@@ -1,4 +1,5 @@
 import { gql } from 'apollo-server-express';
+import tradeLog from './tradeLog';
 
 const typeDefs = gql`
   scalar Date
@@ -12,4 +13,4 @@ const typeDefs = gql`
   }
 `;
 
-export default [typeDefs];
+export default [typeDefs, tradeLog];

@@ -1,7 +1,8 @@
-import { GraphQLDateTime } from 'graphql-iso-date';
+import { GraphQLDate } from 'graphql-iso-date';
+import tradeLog from './tradeLog';
 
 const customDateScalarResolver = {
-  Date: GraphQLDateTime,
+  Date: GraphQLDate,
 };
 
-export default [customDateScalarResolver];
+export default [customDateScalarResolver, tradeLog];
