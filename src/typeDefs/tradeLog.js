@@ -2,7 +2,7 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    tradeLogs: [TradeLog!]
+    tradeLogs(cursor: String, limit: Int): [TradeLog!]
     tradeLogsByCode(code: String!): [TradeLog!]
   }
 
