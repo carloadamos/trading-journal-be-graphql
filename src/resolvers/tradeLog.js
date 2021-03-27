@@ -28,6 +28,7 @@ module.exports = {
       const newTrade = new TradeLog({
         ...input,
         tradeDate: new Date(input.tradeDate),
+        overrideFees: input.overrideFees || 0,
         fees: 100, // TODO: Calculate fee
         net: 1000, // TODO: Calculate net
       });
