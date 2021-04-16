@@ -2,15 +2,15 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    tradeLogs(cursor: String, limit: Int): [TradeLog!]
-    tradeLogsByCode(code: String!): [TradeLog!]
+    tradeLogs(cursor: String, limit: Int): [Trade!]
+    tradeLogsByCode(code: String!): [Trade!]
   }
 
   extend type Mutation {
-    addTrade(input: addTradeInput): TradeLog
+    addTrade(input: addTradeInput): Trade
   }
 
-  type TradeLog {
+  type Trade {
     id: ID!
     tradeDate: Date!
     code: String!

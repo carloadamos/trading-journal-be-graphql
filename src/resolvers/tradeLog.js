@@ -2,7 +2,7 @@ import TradeLog from '../database/models/tradeLog';
 
 module.exports = {
   Query: {
-    tradeLogs: async (_, { cursor, limit = 2 }) => {
+    tradeLogs: async (_, { cursor, limit = 100 }) => {
       const query = {};
       if (cursor) {
         // eslint-disable-next-line no-underscore-dangle
@@ -11,16 +11,14 @@ module.exports = {
         };
       }
 
-      const tradeLogs = await TradeLog.find(query)
-        .sort({ _id: 1 })
-        .limit(limit);
+      const trades = await TradeLog.find(query).sort({ _id: 1 }).limit(limit);
 
-      return tradeLogs;
+      return trades;
     },
     tradeLogsByCode: async (_, { code }) => {
-      const tradeLogs = TradeLog.find({ code });
+      const trades = TradeLog.find({ code });
 
-      return tradeLogs;
+      return trades;
     },
   },
   Mutation: {
