@@ -29,7 +29,7 @@ apolloServer.applyMiddleware({ app, path: '/graphql' });
 const PORT = process.env.PORT || 3000;
 
 app.use('/', (req, res, next) => {
-  res.send({ message: 'Hello' });
+  res.send({ message: '' });
 });
 
 app.listen(PORT, () => {
