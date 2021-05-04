@@ -2,35 +2,28 @@ import { gql } from 'apollo-server-express';
 
 export default gql`
   extend type Query {
-    stockData(cursor: String, limit: Int): [StockData!]
+    stockDataAll(cursor: String, limit: Int): [StockData!]
     stockDataByCode(code: String!): [StockData!]
   }
 
   extend type Mutation {
-    addBulkStockData(input: bulkStockDataInput): [StockData]
+    addStockData(input: stockDataInput): [StockData]
+    addStockDataBulk(input: bulkStockDataInput): [StockData]
   }
 
   type StockData {
-    code: String!
-    tradeDate: Date!
-    open: Float!
-    high: Float!
-    low: Float!
-    close: Float!
-    volume: Float!
+    tickerSymbol: String!
+    companyName: String!
+    status: String!
   }
 
-  input stockInput {
-    code: String!
-    tradeDate: Date!
-    open: Float!
-    high: Float!
-    low: Float!
-    close: Float!
-    volume: Float!
+  input stockDataInput {
+    tickerSymbol: String!
+    companyName: String!
+    status: String!
   }
 
   input bulkStockDataInput {
-    stocks: [stockInput!]
+    stocks: [stockDataInput!]
   }
 `;

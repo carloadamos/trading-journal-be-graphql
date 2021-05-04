@@ -1,8 +1,8 @@
-import Stock from '../database/models/stock';
+import StockData from '../database/models/stockData';
 
 module.exports = {
   Query: {
-    stockData: async (_, { cursor, limit = 100 }) => {
+    stockDataAll: async (_, { cursor, limit = 100 }) => {
       const query = {};
       if (cursor) {
         // eslint-disable-next-line no-underscore-dangle
@@ -11,19 +11,24 @@ module.exports = {
         };
       }
 
-      const trades = await Stock.find(query).sort({ _id: 1 }).limit(limit);
+      const result = await StockData.find(query).sort({ _id: 1 }).limit(limit);
 
-      return trades;
+      return result;
     },
     stockDataByCode: async (_, { code }) => {
-      const trades = Stock.find({ code });
+      const result = StockData.find({ code });
 
-      return trades;
+      return result;
     },
   },
   Mutation: {
-    addBulkStockData: async (_, { input }) => {
-      const result = await Stock.insertMany(input.stocks);
+    addStockData: async (_, { input }) => {
+      const result = await StockData.insertMany(input);
+
+      return result;
+    },
+    addStockDataBulk: async (_, { input }) => {
+      const result = await StockData.insertMany(input.stocks);
 
       return result;
     },

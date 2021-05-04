@@ -1,6 +1,6 @@
 import { Schema, model } from 'mongoose';
 
-const stockSchema = new Schema(
+const stockHistorySchema = new Schema(
   {
     code: {
       type: String,
@@ -36,4 +36,4 @@ const stockSchema = new Schema(
   }
 );
 
-export default model('Stock', stockSchema);
+export default model('StockHistory', stockHistorySchema);

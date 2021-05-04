@@ -1,5 +1,6 @@
 import { gql } from 'apollo-server-express';
 import tradeLog from './tradeLog';
+import stockHistory from './stockHistory';
 import stockData from './stockData';
 
 const typeDefs = gql`
@@ -14,4 +15,4 @@ const typeDefs = gql`
   }
 `;
 
-export default [typeDefs, tradeLog, stockData];
+export default [typeDefs, tradeLog, stockData, stockHistory];
